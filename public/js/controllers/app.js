@@ -431,7 +431,8 @@ app.controller("AreasController",function($scope, $http){
     /*************************SimuladorController***************************/
 
     app.controller("SimuladorController",function($scope, $http, $location,$routeParams){
-    $scope.editVar=$routeParams.preguntaId;
+    /*---------------------------Funciones agregadas****************/
+    $scope.editVar=$routeParams.preguntaId;//<-Recibe el parametro para editar las preguntas->
     console.log($scope.editVar);
       /* filtro x primera letra */
       $scope.startsWith =function(actual, expected) {
@@ -474,7 +475,7 @@ app.controller("AreasController",function($scope, $http){
           console.log(err);
           //alert("error");
         });
-
+        /*<-Funcion que recibe las preguntas para editar->*/
         $http.get("http://localhost:8000/getPreguntas2/"+$scope.editVar)
         .then(function(data){
           console.log(data);
@@ -485,10 +486,16 @@ app.controller("AreasController",function($scope, $http){
           console.log(err);
           //alert("error");
         });
+        /*<-----------------------Funcion que recibe las respuestas ---------------------->*/
         $http.get("http://localhost:8000/getPreguntas1/"+$scope.editVar)
         .then(function(data){
           console.log(data);
           $scope.respuesta = data.data;
+          $scope.respuesta[0].correcta=0;
+          $scope.respuesta[1].correcta=0;
+          $scope.respuesta[2].correcta=0;
+          $scope.respuesta[3].correcta=0;
+
           //$scope.mostrarCargando = false;
         },
         function(err){
@@ -576,8 +583,12 @@ app.controller("AreasController",function($scope, $http){
 
 
       }
-
+/*<-------------------Funcion que manda los datos para actualizar las preguntas--------->*/
       $scope.updatePregunta = function(dato){
+        $scope.newPregunta.correcta1=0;
+        $scope.newPregunta.correcta2=0;
+        $scope.newPregunta.correcta3=0;
+        $scope.newPregunta.correcta4=0;
         $scope.newPregunta.respuesta1=$scope.respuesta[0].respuesta;
         $scope.newPregunta.respuesta2=$scope.respuesta[1].respuesta;
         $scope.newPregunta.respuesta3=$scope.respuesta[2].respuesta;
@@ -606,6 +617,7 @@ app.controller("AreasController",function($scope, $http){
         .then(function(data,status,headers,config){
                  // success callback
                  //alert('llego aqui');
+                 console.log($scope.newPregunta);
                  console.log(data);
                  $scope.message = "Pregunta editada satisfactoriamente!";
                  //$scope.message = "Usuario editado satisfactoriamente."

@@ -195,7 +195,7 @@ class SimuladorExamenController extends Controller
         $respuesta[$i]->pregunta_id=$pregunta->id;
         $respuesta[$i]->respuesta=$request->respuesta[$i];
 
-        if($request->correcta[$i] === null)
+        if($request->correcta[$i] == 0)
           $respuesta[$i]->correcta=0;
         else
           $respuesta[$i]->correcta=1;

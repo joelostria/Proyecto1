@@ -210,6 +210,7 @@ s0.parentNode.insertBefore(s1,s0);
 					    <div class="form-group">
 					      <label class="control-label col-sm-2" for="info">Imagen General</label>
 					      <div class="col-sm-10">
+                  <label ng-model="editArea.imagen_general">@{{editArea.imagen_general}}</label>
 					        <input type="file" class="form-control" id="imagen_general" name="imagen_general" file-model = "newArea.imagen_general" autofocus>
 					      </div>
 					    </div>
@@ -217,6 +218,7 @@ s0.parentNode.insertBefore(s1,s0);
 					    <div class="form-group">
 					      <label class="control-label col-sm-2" for="info">Información General</label>
 					      <div class="col-sm-10">
+                  <label ng-model="editArea.informacion_general">@{{editArea.informacion_general}}</label>
 					        <input type="file" class="form-control" id="informacion_general" name="informacion_general" file-model = "newArea.informacion_general" autofocus>
 					      </div>
 					    </div>
@@ -224,6 +226,7 @@ s0.parentNode.insertBefore(s1,s0);
 					    <div class="form-group">
 					      <label class="control-label col-sm-2" for="video">Video General</label>
 					      <div class="col-sm-10">
+                  <label ng-model="editArea.video_general">@{{editArea.video_general}}</label>
 					        <input type="file" class="form-control" id="video_general" name="video_general" file-model = "newArea.video_general" autofocus>
 					      </div>
 					    </div>
